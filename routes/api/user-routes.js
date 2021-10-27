@@ -49,7 +49,25 @@ router.post('/', (req, res) => {
 
 
 // PUT /api/users/1
-router.put('/:id', (req, res) => {});
+router.put('/:id', (req, res) => {
+    // expects {username: 'testuser', email: 'testemail@email.com', password: 'test1234'}
+    User.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message:  'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 // DELETE /api/users/1
 router.delete('/:id', (req, res) => {});
