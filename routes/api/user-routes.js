@@ -1,5 +1,5 @@
-const router = require = require('express').Router();
-const { User } = require('../../models');
+const router = require('express').Router();
+const { User } = require('../../models/User');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
-        })
+        });
 });
 
 // GET /api/users/1
@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
         .catch(err => {
             console.log(err);
             res.status(500).json(err)
-        })
+        });
 });
 
 // POST /api/users

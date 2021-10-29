@@ -31,13 +31,11 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8,15]
+                len: [8, 14]
             }
         }
     },
     {
-        // TABLE CONFIG OPTIONS GO HERE
-
         // pass in our imported sequelize connection
         sequelize,
         // don't automatically create createdAt/updatedAt timestamp fields
@@ -51,4 +49,4 @@ User.init(
     }
 );
 
-model.exports = User;
+module.exports = User; 
