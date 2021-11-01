@@ -3,7 +3,10 @@ const { User } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
-    User.findAll()
+    User.findAll({
+        // will exclude user passwords on the api request
+        attributes: { exclude: ['password'] }
+    })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -14,6 +17,7 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
     User.findOne({
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         }
