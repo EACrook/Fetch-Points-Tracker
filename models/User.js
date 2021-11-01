@@ -31,7 +31,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8, 14]
+                len: [8]
             }
         }
     },
@@ -39,7 +39,7 @@ User.init(
         // pass in our imported sequelize connection
         sequelize,
         // don't automatically create createdAt/updatedAt timestamp fields
-        timestamp: false,
+        timestamps: false,
         // don't pluralize name of database table
         freezeTableName: true,
         // use underscores instead of camel-casing
